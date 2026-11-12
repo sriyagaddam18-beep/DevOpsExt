@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f3f4f6;
+      padding: 1rem;
+    }
+
+    .register-card {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .register-card h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #111827;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.65rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #2563eb;
+    }
+
+    .error-msg {
+      color: #dc2626;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      display: none;
+    }
+
+    .btn-register {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      background-color: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-register:hover {
+      background-color: #1d4ed8;
+    }
+
+    .extra-links {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #4b5563;
+    }
+
+    .extra-links a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .extra-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="register-card">
+    <h2>Create Account</h2>
+    <form id="registerForm" action="/register" method="POST">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Aarav Sharma" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Minimum 8 characters" minlength="8" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+      </div>
+
+      <p id="errorMsg" class="error-msg">Passwords do not match.</p>
+
+      <button type="submit" class="btn-register">Sign Up</button>
+
+      <div class="extra-links">
+        Already have an account? <a href="index.html">Log In</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('registerForm');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', function (event) {
+      if (password.value !== confirmPassword.value) {
+        event.preventDefault();
+        errorMsg.style.display = 'block';
+        confirmPassword.style.borderColor = '#dc2626';
+      } else {
+        errorMsg.style.display = 'none';
+        confirmPassword.style.borderColor = '#d1d5db';
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
